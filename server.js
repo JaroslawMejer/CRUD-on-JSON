@@ -14,10 +14,11 @@ app.get('/getNote', function(req, res){
 })
 
 app.post('/updateNote/:note', function(req, res){
-	stringifyFile.concat(req.params.note);
+	stringifyFile += req.params.note
 	fs.writeFile('./test.json', stringifyFile, function() {
-	    console.log('file updated');
+	    console.log('file updated with' + req.params.note);
 	});
+	res.end();
 })
 
 app.listen(3000)
